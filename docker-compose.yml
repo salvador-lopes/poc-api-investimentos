@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  investimentos-db:
+    image: ${DOCKER_DB_IMAGE}
+    container_name: ${DOCKER_DB_CONTAINER_NAME}
+    ports:
+      - ${DOCKER_DB_PORTS}
+    volumes:
+      - ${DOCKER_DB_VOLUMES}
+    networks:
+      - sgtnet
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DOCKER_DB_PASSWORD}
+      MYSQL_DATABASE: ${DOCKER_DB_DATABASE}
+networks:
+  sgtnet:
+volumes:
+  sgt:
