@@ -21,6 +21,12 @@ export class Investments extends Model {
   })
   value: number;
 
+  @Column({ allowNull: false})
+  investedAt: Date;
+
+  @Column({ allowNull: false, unique: 'description'})
+  description: string;
+
   @DeletedAt
   deletionDate: Date;
  
