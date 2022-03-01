@@ -1,17 +1,24 @@
-import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { Investments } from './models/investiments';
+import { Balances } from './models/balances.model';
+import { Users } from './models/users.model';
+import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    SequelizeModule.forFeature([
+      Users,
+      Investments,
+      Balances
+    ]),
     SequelizeModule.forRoot({
       dialect: 'mysql',
-      dialectModule: require('mysql2'),
       host: process.env.DB_LOCAL_HOST,
-      port: 3306,
+      port: Number(process.env.DB_LOCAL_PORT),
       username: process.env.DB_LOCAL_USERNAME,
       password: process.env.DB_LOCAL_PASSWORD,
       database: process.env.DB_LOCAL_DBNAME,
