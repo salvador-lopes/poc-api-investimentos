@@ -2,7 +2,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Investments } from './models/investiments';
-import { Balances } from './models/balances.model';
 import { Users } from './models/users.model';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -12,9 +11,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({ isGlobal: true }),
     SequelizeModule.forFeature([
       Users,
-      Investments,
-      Balances
-    ]),
+      Investments    ]),
     SequelizeModule.forRoot({
       dialect: 'mysql',
       host: process.env.DB_LOCAL_HOST,
