@@ -193,95 +193,67 @@ describe('AppService', () => {
       1,
       'Investimento Teste 1',
     );
-    
+
     const id = 1;
-    const cashOutDay ='3000/02/01';
+    const cashOutDay = '3000/02/01';
     const cashoutResponse = { message: 'Period out of limit, check data' };
 
     const response = await appService.cashOut(id, cashOutDay);
 
     expect(response.data).toStrictEqual(cashoutResponse);
   });
-});
-/*   it('Deve ser capaz de listar um produto por nome', async () => {
-      await produtoService.criaProduto({
-        propriedade: 'produto',
-        token: 'token',
-        data: {
-          nome: 'Igual 1',
-        },
-      });
-      await produtoService.criaProduto({
-        propriedade: 'produto',
-        token: 'token',
-        data: {
-          nome: 'Igual 2',
-        },
-      });
-      await produtoService.criaProduto({
-        propriedade: 'produto',
-        token: 'token',
-        data: {
-          nome: 'Diferente 3',
-        },
-      });
-
-      const findRequest = {
-        propriedade: 'produto',
-        token: '',
-        data: {
-          offset: 0,
-          filtros: ['nome:Igual'],
-          orderField: 'nome',
-          orderType: 'DESC',
-        },
-      };
-
-      const response = await produtoService.buscaProduto(findRequest);
-
-      expect(response.data.registros).toHaveLength(2);
-    });
-
-    it('Deve ser capaz de disparar uma exceção caso não encontre o produto por id', async () => {
-      const findRequest = {
-        propriedade: 'produto',
-        token: '',
-        data: {
-          offset: 0,
-          filtros: ['id:2'],
-          orderField: 'nome',
-          orderType: 'DESC',
-        },
-      };
-
-      expect(produtoService.buscaProduto(findRequest)).rejects.toBeInstanceOf(
-        BadRequestException,
-      );
-    });
-
-    it('Deve ser capaz de returna um array vazio caso não encontre um produto pelo nome', async () => {
-      await produtoService.criaProduto({
-        propriedade: 'produto',
-        token: 'token',
-        data: {
-          nome: 'Produto Teste 1',
-        },
-      });
-
-      const findRequest = {
-        propriedade: 'produto',
-        token: '',
-        data: {
-          offset: 0,
-          filtros: ['nome:Txai'],
-          orderField: 'nome',
-          orderType: 'DESC',
-        },
-      };
-      const response = await produtoService.buscaProduto(findRequest);
-      console.log(response);
-
-      expect(response.data.registros).toHaveLength(0);
-    });
+  it('Should creat an investment', async () => {
+    const request = {
+      value: 1000,
+      date: '2022/03/01',
+      userId: 1,
+      description: 'Investimento hoje',
+    };
+    const { value, date, userId, description } = request;
+    const response = await appService.investmentCreator(
+      date,
+      value,
+      userId,
+      description,
+    );
+    const successMessage = {message: "Success. Investment id 1"}
+   
+    expect(response.data).toStrictEqual(successMessage);
   });
-}); */
+  it('Should not creat an investment with later date', async () => {
+    const request = {
+      value: 1000,
+      date: '3000/03/01',
+      userId: 1,
+      description: 'Investimento Posterior Negado',
+    };
+    const { value, date, userId, description } = request;
+    const response = await appService.investmentCreator(
+      date,
+      value,
+      userId,
+      description,
+    );
+    const failureMessage = {message: "Period out of limit"}
+   
+    expect(response.data).toStrictEqual(failureMessage);
+  });
+  it('Should not creat an investment with invalid value', async () => {
+    const request = {
+      value: -1000,
+      date: '2020/03/01',
+      userId: 1,
+      description: 'Investimento Posterior Negado',
+    };
+    const { value, date, userId, description } = request;
+    const response = await appService.investmentCreator(
+      date,
+      value,
+      userId,
+      description,
+    );
+    const failureMessage = {error: new Error()}
+   
+    expect(response.data).toStrictEqual(failureMessage)
+  });
+});

@@ -4,7 +4,7 @@ export class InvestmentsMock {
 
   async create(data): Promise<Investments> {
     const investment = new Investments();
-
+    if (data.value <= 0) throw new Error();
     Object.assign(investment, {
       id: this.investments.length + 1,
       description: data.description,
