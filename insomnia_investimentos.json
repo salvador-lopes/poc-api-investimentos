@@ -1,0 +1,192 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2022-03-02T14:41:33.958Z",
+  "__export_source": "insomnia.desktop.app:v2021.7.2",
+  "resources": [
+    {
+      "_id": "req_16cb5039fe6446b0b21cec23fadb07db",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646232010829,
+      "created": 1646161668840,
+      "url": "localhost:3000/investment",
+      "name": "cashout",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"id\": 2,\n\t\"cashOutDay\": \"2022/03/01\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_68734629a1be4c9d95bcdac9c5224f14"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1646161668840,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "parentId": null,
+      "modified": 1646138266761,
+      "created": 1646138266761,
+      "name": "Investimentos",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_584745fc0ad54b1399944e7b0bbfd90f",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646231983482,
+      "created": 1646139787289,
+      "url": "localhost:3000/investment",
+      "name": "investment creator",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"value\": 1000,\n\t\"date\" : \"2022/03/01\",\n\t\"userId\" : 1,\n\t\"description\": \"Investimento novo\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ced295730b934bfd8fdf2a923ad0313b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1646139787289,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_73219a62cba5404e95212694b998a5e9",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646231859552,
+      "created": 1646141169648,
+      "url": "localhost:3000/user",
+      "name": "user creator",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"salvador lopes\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ced295730b934bfd8fdf2a923ad0313b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1646139033051.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b85195ca1cd647ac8ea3ce6fc75358e6",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646165879494,
+      "created": 1646155273597,
+      "url": "localhost:3000/investment/2",
+      "name": "investment findById",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645975936791.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_439ef65f73d541bf95478843ad30d1e0",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646164804462,
+      "created": 1646159911180,
+      "url": "localhost:3000/investment/?userId=1&offset=0",
+      "name": "investment findAllByUserId",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1645894765780.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_453aaacd52ef1af4166fc29b7d9fb5012eb73b63",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646138266772,
+      "created": 1646138266772,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1646138266772,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_453aaacd52ef1af4166fc29b7d9fb5012eb73b63",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646138266777,
+      "created": 1646138266777,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_5cbc668b571940d894a0514c006b49f3",
+      "parentId": "wrk_25c2ceb7e5d040f7844440674cf2668f",
+      "modified": 1646138266763,
+      "created": 1646138266763,
+      "fileName": "Investimentos",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
