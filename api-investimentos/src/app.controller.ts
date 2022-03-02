@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Param,
-  Post,
-  Put,
-  Query,
-  Req,
-} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { IInvestment } from './interfaces/investment.interface';
 import { IResponse } from './interfaces/response.interface';
@@ -21,6 +12,7 @@ export class AppController {
   async getOneInvestment(@Param() id: any): Promise<IResponse> {
     return this.appService.getInvestmentById(id);
   }
+
   @Get('/investment')
   async getAllInvestmentOfAnUser(@Query() query): Promise<IResponse> {
     return this.appService.getInvestmentsByUserId(query);
@@ -40,6 +32,7 @@ export class AppController {
 
   @Post('/user')
   async createUser(@Body() body: IUser): Promise<IResponse> {
+   
     const { name } = body;
     return this.appService.userCreator(name);
   }

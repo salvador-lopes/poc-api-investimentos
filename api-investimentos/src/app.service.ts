@@ -17,6 +17,7 @@ export class AppService {
     private readonly investmentModel: typeof Investments,
   ) {}
   async getInvestmentsByUserId(query: any): Promise<IResponse> {
+    
     try {
       const { userId, offset } = query;
       let investments: Investments[] | null;
@@ -41,7 +42,7 @@ export class AppService {
   }
 
   async getInvestmentById(id: any): Promise<IResponse> {
-    try {
+     try {
       let investment: Investments | null;
       investment = await this.investmentModel.findOne({
         where: { id: Number(id.id) },
@@ -94,7 +95,7 @@ export class AppService {
       return Responses._Define(201, {
         investment: investment.description,
         initialValue: investment.value,
-        'value + gains': gains,
+        gains: gains,
         taxes: Number(taxes.toFixed(2)),
         result: `Total amount ${(gains - taxes).toFixed(2)}`,
       });
@@ -141,14 +142,16 @@ export class AppService {
 
   async userCreator(name: string): Promise<IResponse> {
     try {
+     
       let user: Users | null;
       user = await this.userModel.findOne({ where: { name: name } });
       if (!!user)
         return Responses._Define(404, {
           message: 'user already created',
         });
+
       user = await this.userModel.create({ name: name });
-      return Responses._Define(404, {
+      return Responses._Define(201, {
         message: `user ${name} successfully created. id ${user.id}`,
       });
     } catch (error) {
